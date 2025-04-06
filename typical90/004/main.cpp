@@ -8,5 +8,28 @@ using namespace std;
 typedef long long ll;
 
 int main() {
-  
+  int h,w;
+  cin >> h >> w;
+  vector<vector<int>> a(h, vector<int>(w));
+  vector<int> sh(h,0);
+  vector<int> sw(w,0);
+  rep(i,h) {
+    rep(j,w) {
+      int aa;
+      cin >> aa;
+      a.at(i).at(j) = aa;
+      sh.at(i)+=aa;
+      sw.at(j)+=aa;
+    }
+  }
+  rep(i,h) {
+    rep(j,w) {
+      if (j>0) {
+        cout << ' ';
+      }
+      int r = sh.at(i) + sw.at(j) - a.at(i).at(j);
+      cout << r;
+    }
+    cout << endl;
+  }
 }
