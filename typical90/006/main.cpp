@@ -8,5 +8,27 @@ using namespace std;
 typedef long long ll;
 
 int main() {
-  
+  int n,k;
+  string s,ms;
+  cin >> n >> k >> s;
+  string dp;
+  rep(i,n-k+1) {
+    if (i==0) {
+      dp = s.substr(0,k);
+      continue;
+    }
+    string nxt = dp + s.at(i+k-1);
+    bool f=false;
+    rep(j,k) {
+      if (nxt.at(j+1) < nxt.at(j)) {
+        nxt.erase(j,1);
+        f=true;
+        break;
+      }
+    }
+    if (f) {
+      dp = nxt;
+    }
+  }
+  cout << dp << endl;
 }
